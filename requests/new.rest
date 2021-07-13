@@ -1,0 +1,9 @@
+POST http://localhost:7000/api/v1/tasks HTTP/1.1
+content-type: application/json
+
+{
+  "id": 2,
+  "title": "Clean your laptop"
+}
+
+GET http://localhost:7000/api/v1/tasks HTTP/1.1
