@@ -1,0 +1,29 @@
+{
+  "name": "personalize-me",
+  "version": "1.0.0",
+  "description": "This is an effort to make an open source API for personalized scheduling of things and making things easier in your life.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "lint": "eslint server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nimit2801/personalize-me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nimit2801/personalize-me/issues"
+  },
+  "homepage": "https://github.com/nimit2801/personalize-me#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0"
+  }
+}
