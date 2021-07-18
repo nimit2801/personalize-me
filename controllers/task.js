@@ -8,7 +8,7 @@ let tasks = [
   },
 ];
 
-exports.getTasks = async (req, res, next) => {
+export const getTasks = async (req, res, next) => {
   console.log('getTasks');
   res.status(200).json({ success: true, count: tasks.length, data: tasks });
 };
@@ -16,7 +16,7 @@ exports.getTasks = async (req, res, next) => {
 // @desc Create New Task
 // @route POST /api/v1/tasks
 
-exports.createTasks = async (req, res, next) => {
+export const createTasks = async (req, res, next) => {
   let newTask = await req.body;
   console.log(req);
   if (newTask) {
