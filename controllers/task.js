@@ -1,13 +1,6 @@
 // @desc Get All Tasks
 // @route GET /api/v1/tasks
 
-let tasks = [
-  {
-    id: 1,
-    title: 'Clean your cloths',
-  },
-];
-
 export const getTasks = async (req, res, next) => {
   console.log('getTasks');
   res.status(200).json({ success: true, count: tasks.length, data: tasks });
