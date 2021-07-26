@@ -5,12 +5,13 @@ const client = new Schema({
   userName: {type: String, required: true, unique: true},
   fullName: { type: String, required: true },
   created: { type: Date, default: new Date},
-  password: { type: String, required: true}
+  password: { type: String, required: true},
+  token: {type: String, required: true, unique: true},
 })
 
 const taskClass = new Schema({
   userName: {type: String, ref: 'client', default: 'Nimit2801'},
-  taskClass: {type: String, required: true},
+  taskClass: {type: String, required: true, unique: true},
   description: String,
   date: { type: Date, default: Date.now, required: true },
 });
