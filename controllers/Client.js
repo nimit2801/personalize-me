@@ -19,7 +19,7 @@ export const createNewClient = async (req, res, next) => {
 }
 
 export const getClient = async (req, res, next) => {
-    const client = await Client.findOne({token: req.body.token});
+    const client = await Client.findOne({token: req.headers.token});
     if(!client) {
         return res.status('404').json({success: false, message:'The client was not found!'});
     }
