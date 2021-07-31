@@ -19,7 +19,7 @@ const taskClass = new Schema({
 const task = new Schema({
   userName: {type: String, ref: 'client'},
   taskName:  {type: String, required: true},
-  taskClass: {type: mongoose.Schema.Types.ObjectId, ref: 'taskClass', required: true},
+  taskClass: {type: String, ref: 'taskClass', required: true},
   description: String,
   date: { type: Date, default: Date.now, required: true },
   priority: { type: String, default: 'low', required: true },
