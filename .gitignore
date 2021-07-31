@@ -108,3 +108,7 @@ package-lock.json
 
 # environment
 database/config.env
+
+# dev IDE
+.idea
+.vscode
