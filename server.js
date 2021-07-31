@@ -1,15 +1,14 @@
 // Includes for the api
 import express from 'express';
-import _ from './database/connect.js';
 const app = express();
+const PORT = process.env.PORT || 7000;
+import {conn} from './database/connect.js';
+conn();
 
 // Body Parser
 app.use(express.json());
 
-// importing middlewares
-// import { auth } from './middleware/auth.js';
-// app.use(auth);
-const PORT = process.env.PORT || 7000;
+//Connecting to the database
 
 // Route Files
 import tasks from './routes/task.js';
