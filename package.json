@@ -4,8 +4,7 @@
   "description": "This is an effort to make an open source API for personalized scheduling of things and making things easier in your life.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "nodemon server.js",
     "lint": "eslint server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
