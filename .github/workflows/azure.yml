@@ -15,12 +15,13 @@
 #
 # For more information on GitHub Actions for Azure, refer to https://github.com/Azure/Actions
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
-on:
-  release:
-    types: [created]
+on: 
+  push:
+    branches: 
+      - main
 
 env:
-  AZURE_WEBAPP_NAME: personalize-mee    # set this to your application's name
+  AZURE_WEBAPP_NAME: personalize-me    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '14.x'                # set this to the node version to use
 
@@ -40,8 +41,6 @@ jobs:
         # Build and test the project, then
         # deploy to Azure Web App.
         npm install
-        npm run build --if-present
-        npm run test --if-present
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
