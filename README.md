@@ -1,6 +1,6 @@
 # Personalize Me
 <b>A very strong but minimalistic API, for task scheduling and tracking </b><br/>
-API End-Point: TBD
+API End-Point: https://personalize-me.azurewebsites.net
 
 ## Motive
 Personalize me is started of as a personal project for me to tab on to some of my daily tasks. While I was developing the API i tought of adding more things and making the API stronger and which could be used directly by the clients and orgs. I tried to bridge the gap between having a complex api for clients and and personal use, and tried to make it more minimalistic
