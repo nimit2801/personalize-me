@@ -3,19 +3,20 @@ import bcrypt from 'bcrypt';
 // @desc create new client
 // @route POST /client
 // @access private
-
-function generateRandomString() {
-	let randomString = '';
-	const randomNumber = Math.floor(Math.random() * 10);
-
-	for (let i = 0; i < 20 + randomNumber; i++) {
-		randomString += String.fromCharCode(33 + Math.floor(Math.random() * 94));
-	}
-
-	return randomString;
+function makeid() {
+    const length = 10;
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
 }
+
 export const createNewClient = async (req, res, next) => {
-    let random = await generateRandomString();
+    let random = await makeid();
     const password = await req.body.password;
     const salt = await bcrypt.genSalt(10);
     let hash = await bcrypt.hash(password, salt);
@@ -57,4 +58,17 @@ export const getClient = async (req, res, next) => {
         }
         return res.status('200').json({success: true, data: client})
     }
+}
+
+export const deleteClient = async(req, res, next) => {
+    let token = await req.headers.token;
+    if(!token) {
+        return res.status('401').json({success: false, data: 'unauthaurized!'});
+    }
+    const deleteClient = await Client.findOneAndDelete({token});
+    console.log(deleteClient);
+    if(!deleteClient) {
+        return res.status(400).json({ success: false, data: 'Client was not found' });
+    }
+    return res.status(200).json({success: true, data: 'Client was deleted successfully'});
 }
