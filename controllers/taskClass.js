@@ -19,18 +19,26 @@ export const getTaskClasses = async (req, res, next) => {
 // @route POST /api/v1/taskclass
 // @access private
 export const createTaskClass = async (req, res, next) => {
-    let client = await Client.findOne({token: req.headers.token});
+    const token = await req.headers.token;
+    let client = await Client.findOne({token});
     if(!client) {
-        return res.status(401).json({ success: false, message: 'Invalid Token Passed' });
+        return res.status('401').json({ success: false, message: 'Invalid Token Passed' });
     }
     let userName = await client.userName;
+    let checkTask = await TaskClass.findOne({
+        taskClass: req.body.taskClass
+    })
+    if(checkTask){
+        return res.status('401').json({status: false, data: 'Task already exists!'});
+    }
     const newTaskClass = await TaskClass.create({
+        token,
         userName,
         taskClass: req.body.taskClass,
         description: req.body.description,
     });
     if(!newTaskClass) {
-        return res.status(400).json({ success: false, message: 'Client not found' });
+        return res.status('400').json({ success: false, message: 'task was not created' });
     }
     return res.status('200').json({success: true, message: 'Task Class created successfully', data: newTaskClass});
 };
