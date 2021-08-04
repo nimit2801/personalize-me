@@ -10,8 +10,9 @@ const client = new Schema({
 })
 
 const taskClass = new Schema({
-  userName: {type: String, ref: 'client', default: 'Nimit2801'},
-  taskClass: {type: String, required: true, unique: true},
+  token: {type: String, required: true},
+  userName: {type: String, ref: 'client'},
+  taskClass: {type: String, required: true},
   description: String,
   date: { type: Date, default: Date.now, required: true },
 });
